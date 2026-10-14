@@ -1,0 +1,8 @@
+seeds:
+  - name: zip_ranges
+    description: Approximate ZIP code ranges by state (extract, to be replaced by an official source).
+    config:
+      column_types:
+        state: varchar
+        zip_min: varchar
+        zip_max: varchar
