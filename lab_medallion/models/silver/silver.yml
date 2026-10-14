@@ -7,6 +7,11 @@ models:
         data_tests:
           - unique
           - not_null
+      - name: username_normalized
+        description: Username without surrounding whitespace, in lowercase.
+        data_tests:
+          - not_null
+          - unique
       - name: email
         data_tests:
           - unique
@@ -16,6 +21,16 @@ models:
           - accepted_values:
               arguments:
                 values: ["F", "M"]
+      - name: birthdate
+        description: Birthdate, NULL when it is later than the first order of the user.
+      - name: birthdate_is_valid
+        description: False when the original birthdate was later than the first order.
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [true, false]
+                quote: false
       - name: state
         description: Two letters code of the state, territory or military region.
         data_tests:
